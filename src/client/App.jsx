@@ -12,7 +12,10 @@ class App extends React.Component {
     this.state = {
         error: null,
         isLoaded: false,
-        lots: []
+        lots: [],
+        carparkDetails:[],
+        lat: 1.2751,
+        lng: 103.8435
     };
   }
 
@@ -81,7 +84,7 @@ class App extends React.Component {
                             </div>
                             <div className ="col-4">
                                 <div>location</div>
-                                    <MapContainer/>
+                                    <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
                             </div>
                         </div>
                     </div>
