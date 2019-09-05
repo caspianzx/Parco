@@ -1,50 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
-import MapContainer from './components/map/map';
-import Info from './components/info/info';
-import Form from './components/form/form';
-import Carpark from './components/carpark/carpark';
-import Button from '@material-ui/core/Button';
-
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-        error: null,
-        isLoaded: false,
-        lots: [],
-        carparkDetails:[],
-        lat: 1.2751,
-        lng: 103.8435
-    };
-  }
-
-//ajax
-    componentDidMount() {
-        fetch("https://api.data.gov.sg/v1/transport/carpark-availability")
-          .then(res => res.json())
-          .then(
-            (result) => {
-                console.log(result)
-              this.setState({
-                isLoaded: true,
-                lots: result.items[0].carpark_data
-              });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
-            }
-          )
-    }
-
-
-    render() {
+render() {
         const { error, isLoaded, products } = this.state;
         if (error) {
           return <div>Error: {error.message}</div>;
@@ -52,8 +6,11 @@ class App extends React.Component {
           return <div>Loading...</div>;
         } else {
             return (
-                    //experiment with material ui
+
                     <div className = "container">
+                     <Button variant="contained" color="primary">
+                      Material UI button
+                     </Button>
                     <div className ="row">
                     <h1>Parco</h1>
                     <h2>Where would you like to go today?</h2>
@@ -94,5 +51,3 @@ class App extends React.Component {
                 }
             }
 }
-
-export default hot(module)(App);
