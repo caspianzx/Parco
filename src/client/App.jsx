@@ -55,6 +55,7 @@ class App extends React.Component {
                     <div className = "container">
                     <div className ="row">
                     <h1>Parco</h1>
+                    <h2>Where would you like to go today?</h2>
                     </div>
                     <div>
                     <input placeholder="search for carpark.."></input>
@@ -73,18 +74,18 @@ class App extends React.Component {
                             </ul>
                             </div>
                             <div className ="col-4">
-                            <div>slots</div>
-                            <ul className="list-group">
-                                {this.state.lots.map((carpark, index) => (
-                                <li className="list-group-item" key={index}>
-                                {carpark.carpark_info[0].total_lots}
-                             </li>
-                            ))}
-                            </ul>
-                            </div>
+                                <div>slots</div>
+                                    <ul className="list-group">
+                                        {this.state.lots.map((carpark, index) => (
+                                        <li className="list-group-item" key={index}>
+                                        {carpark.carpark_info[0].total_lots}
+                                        </li>
+                                        ))}
+                                     </ul>
+                                </div>
                             <div className ="col-4">
                                 <div>location</div>
-                                    <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
+                                <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
                             </div>
                         </div>
                     </div>

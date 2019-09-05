@@ -39,7 +39,11 @@ export class MapContainer extends Component {
 
 
     render() {
-        let pos = {lat: 1.2751, lng: 103.8435}
+        //reassign to a variable so that this. is not confusing
+        let lat = this.props.lat;
+        let lng = this.props.lng;
+
+        let pos = {lat: lat, lng: lng};
 
         return (
         <Map
@@ -48,13 +52,11 @@ export class MapContainer extends Component {
             onClick={this.onMapClicked}
             style={mapStyles}
             initialCenter={{
-             lat: 1.274231,
-             lng: 103.845569
+             lat: lat,
+             lng: lng
             }}
             onClick={this.onMapClicked}
           >
-        <Marker onClick={this.onMarkerClick}
-                name={'GA'} />
         <Marker
         onClick={this.onMarkerClick}
         name={'100am'}
@@ -72,6 +74,7 @@ export class MapContainer extends Component {
   }
 }
 
+// need to remove apiKey
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyDW4ONvvWPJw4dnSIu1UVQQRjvZ0bCHL68'
 })(MapContainer);
