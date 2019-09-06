@@ -18,7 +18,7 @@ class App extends React.Component {
         lng: 103.8435,
         searchResult: [],
         searchQuery: [],
-        filterResult: ["testing"]
+        filterResult: null
     };
     this.searchFilter = this.searchFilter.bind(this);
 
