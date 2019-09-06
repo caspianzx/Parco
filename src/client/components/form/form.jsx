@@ -17,7 +17,7 @@ function FilterList(props) {
             return (
                 <div>
                                 <ul className="list-group">
-                    {props.filterResult.map((result, index) => (
+                    {props.filterResult.slice(0,6).map((result, index) => (
                     <li className="list-group-item" id={styles.filterResult} key={index} data-value ={result.car_park_no} onClick ={props.checkLot}>
                     {result.address}
                     </li>

@@ -45,6 +45,13 @@ class App extends React.Component {
     checkLot(event) {
         console.log(event.target.getAttribute('data-value'));
         let query = event.target.getAttribute('data-value');
+        //find the lat and lng, parseFloat it and convert to lat
+        let parkingInfo = this.state.parkingInfo;
+        let coordinates = parkingInfo.filter(carpark=> carpark.car_park_no.includes(query));
+        let lat = coordinates[0].y_coord;
+        let lng = coordinates[0].x_coord;
+        console.log(lat)
+        //check number of slots
         let lots = this.state.lots;
         let result = lots.filter(carpark=> carpark.carpark_number.includes(query));
         let clearSearch = [];
@@ -89,13 +96,25 @@ class App extends React.Component {
             return (
                     //experiment with material ui
                     <div className = "container">
-
                         <div className = "row">
                             <div className ="col">
                                 <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery}/>
                             </div>
                         </div>
+                        <div className ="row">
+                            <div className ="col-10 offset-1 p-0">
+                                <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
+                            </div>
+                        </div>
                     </div>
+
+
+
+
+
+
+
+
                     );
                 }
             }
