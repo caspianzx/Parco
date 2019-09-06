@@ -1,4 +1,14 @@
-.name{
+.input{
   padding:5px;
-  width:100%;
+  width:60%;
+  border: solid 1px black;
+  border-radius: 5px;
+  position: relative;
+  margin:auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.question {
+	margin-top: 10px;
+	text-align: center;
 }

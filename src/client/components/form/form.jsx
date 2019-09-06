@@ -7,9 +7,23 @@ class Form extends React.Component {
 
   render() {
     return (
-            <div className={styles.search}>
-                <div>Where would you like to go?</div>
-                <div><input className={styles.name} placeholder="searching for.." onChange ={this.props.searchFilter}/></div>
+            <div>
+                <div><p className={styles.question}>Where would you like to go?</p></div>
+
+                <input className={styles.input} placeholder="searching for.." onChange ={this.props.searchFilter}/>
+
+
+
+                <ul className="list-group">
+                  {this.props.filterResult.map((result, index) => (
+                    <li className="list-group-item" key={index} >
+                    {result}
+                     </li>
+                ))}
+                </ul>
+
+                <div> Available Slot : {this.props.searchResult} </div>
+
             </div>
     );
   }

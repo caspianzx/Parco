@@ -15,8 +15,21 @@ class App extends React.Component {
         lots: [],
         parkingInfo:[],
         lat: 1.2751,
-        lng: 103.8435
+        lng: 103.8435,
+        searchResult: [],
+        searchQuery: [],
+        filterResult: ["testing"]
     };
+    this.searchFilter = this.searchFilter.bind(this);
+
+  }
+  searchFilter(event){
+    console.log(event.target.value.toUpperCase())
+
+  }
+
+  checkLot(event) {
+
   }
 
 
@@ -57,9 +70,10 @@ class App extends React.Component {
             return (
                     //experiment with material ui
                     <div className = "container">
+
                         <div className = "row">
                             <div className ="col">
-                                <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
+                                <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult}/>
                             </div>
                         </div>
                     </div>
