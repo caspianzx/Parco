@@ -42,6 +42,7 @@ class App extends React.Component {
     }
     //check for slots using carpark ID code
     checkLot(event) {
+        console.log(event.target.getAttribute('data-value'));
 
     }
 
@@ -86,7 +87,7 @@ class App extends React.Component {
 
                         <div className = "row">
                             <div className ="col">
-                                <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult}/>
+                                <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot}/>
                             </div>
                         </div>
                     </div>
