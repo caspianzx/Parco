@@ -13,35 +13,38 @@ class App extends React.Component {
         error: null,
         isLoaded: false,
         lots: [],
-        carparkDetails:[],
+        parkingInfo:[],
         lat: 1.2751,
         lng: 103.8435
     };
   }
 
-//ajax
+
+
     componentDidMount() {
-        fetch("https://api.data.gov.sg/v1/transport/carpark-availability")
-          .then(res => res.json())
-          .then(
-            (result) => {
-                console.log(result)
-              this.setState({
-                isLoaded: true,
-                lots: result.items[0].carpark_data
-              });
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
+        Promise.all([fetch('https://api.data.gov.sg/v1/transport/carpark-availability'), fetch('https://data.gov.sg/api/action/datastore_search?resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c&limit=3726')])
+
+            .then(([res1, res2]) => {
+            return Promise.all([res1.json(), res2.json()])
+            })
+            .then(([res1, res2]) => {
+            // console.log(res1)
+            // console.log(res2.result.records)
+            // set state in here
+                this.setState({
+                    isLoaded: true,
+                    lots: res1.items[0].carpark_data,
+                    parkingInfo: res2.result.records
+                });
+            },(error) => {
+                    this.setState({
+                    isLoaded: true,
+                    error
+                    });
             }
-          )
+          );
     }
+
 
 
     render() {
@@ -54,38 +57,8 @@ class App extends React.Component {
             return (
                     //experiment with material ui
                     <div className = "container">
-                    <div className ="row">
-                    <h1>Parco</h1>
-                    <h2>Where would you like to go today?</h2>
-                    </div>
-                    <div>
-                    <input placeholder="search for carpark.."></input>
-                    </div>
-
                         <div className = "row">
-
-                            <div className ="col-4">
-                            <div>carpark</div>
-                            <ul className="list-group">
-                                {this.state.lots.map((carpark, index) => (
-                                <li className="list-group-item" key={index}>
-                            {carpark.carpark_number}
-                             </li>
-                            ))}
-                            </ul>
-                            </div>
-                            <div className ="col-4">
-                                <div>slots</div>
-                                    <ul className="list-group">
-                                        {this.state.lots.map((carpark, index) => (
-                                        <li className="list-group-item" key={index}>
-                                        {carpark.carpark_info[0].total_lots}
-                                        </li>
-                                        ))}
-                                     </ul>
-                                </div>
-                            <div className ="col-4">
-                                <div>location</div>
+                            <div className ="col">
                                 <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
                             </div>
                         </div>
