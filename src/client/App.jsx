@@ -29,21 +29,26 @@ class App extends React.Component {
         if(event.target.value == "") {
             let result = this.state.parkingInfo;
             result= event.target.value;
-            this.setState({filterResult: result});
+            this.setState({filterResult: result, searchQuery: result});
         } else {
             console.log(event.target.value.toUpperCase());
+            let searchQuery = event.target.value;
             let searchUpperCase = event.target.value.toUpperCase();
             //set state filtered array into  this.state.filterResult
             let parkingInfo = this.state.parkingInfo;
             let result = parkingInfo.filter(carpark=> carpark.address.includes(searchUpperCase));
             console.log(result);
-            this.setState({filterResult: result})
+            this.setState({filterResult: result, searchQuery: searchQuery})
         }
     }
     //check for slots using carpark ID code
     checkLot(event) {
         console.log(event.target.getAttribute('data-value'));
-
+        let query = event.target.getAttribute('data-value');
+        let lots = this.state.lots;
+        let result = lots.filter(carpark=> carpark.carpark_number.includes(query));
+        let clearSearch = [];
+        this.setState({searchResult: result, filterResult: clearSearch});
     }
 
 
@@ -87,7 +92,7 @@ class App extends React.Component {
 
                         <div className = "row">
                             <div className ="col">
-                                <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot}/>
+                                <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery}/>
                             </div>
                         </div>
                     </div>
