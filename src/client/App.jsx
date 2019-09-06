@@ -7,33 +7,46 @@ import Carpark from './components/carpark/carpark';
 import Button from '@material-ui/core/Button';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-        error: null,
-        isLoaded: false,
-        lots: [],
-        parkingInfo:[],
-        lat: 1.2751,
-        lng: 103.8435,
-        searchResult: [],
-        searchQuery: [],
-        filterResult: null
-    };
-    this.searchFilter = this.searchFilter.bind(this);
+    constructor() {
+        super();
+        this.state = {
+            error: null,
+            isLoaded: false,
+            lots: [],
+            parkingInfo:[],
+            lat: 1.2751,
+            lng: 103.8435,
+            searchResult: [],
+            searchQuery: [],
+            filterResult: []
+        };
+        this.searchFilter = this.searchFilter.bind(this);
+        this.checkLot = this.checkLot.bind(this);
+    }
 
-  }
-  searchFilter(event){
-    console.log(event.target.value.toUpperCase())
+    //filter carpark name with user input and display on searchbar
+    searchFilter(event){
+        if(event.target.value == "") {
+            let result = this.state.parkingInfo;
+            result= event.target.value;
+            this.setState({filterResult: result});
+        } else {
+            console.log(event.target.value.toUpperCase());
+            let searchUpperCase = event.target.value.toUpperCase();
+            //set state filtered array into  this.state.filterResult
+            let parkingInfo = this.state.parkingInfo;
+            let result = parkingInfo.filter(carpark=> carpark.address.includes(searchUpperCase));
+            console.log(result);
+            this.setState({filterResult: result})
+        }
+    }
+    //check for slots using carpark ID code
+    checkLot(event) {
 
-  }
-
-  checkLot(event) {
-
-  }
+    }
 
 
-
+    //double ajax call
     componentDidMount() {
         Promise.all([fetch('https://api.data.gov.sg/v1/transport/carpark-availability'), fetch('https://data.gov.sg/api/action/datastore_search?resource_id=139a3035-e624-4f56-b63f-89ae28d4ae4c&limit=3726')])
 
