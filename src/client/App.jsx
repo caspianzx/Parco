@@ -5,6 +5,11 @@ import Info from './components/info/info';
 import Form from './components/form/form';
 import Carpark from './components/carpark/carpark';
 import Button from '@material-ui/core/Button';
+import Geocode from "react-geocode";
+Geocode.setApiKey("AIzaSyDW4ONvvWPJw4dnSIu1UVQQRjvZ0bCHL68");
+Geocode.enableDebug();
+
+
 
 class App extends React.Component {
     constructor() {
@@ -44,18 +49,34 @@ class App extends React.Component {
     //check for slots using carpark ID code
     checkLot(event) {
         console.log(event.target.getAttribute('data-value'));
+        console.log(event.target.getAttribute('data-address'));
         let query = event.target.getAttribute('data-value');
-        //find the lat and lng, parseFloat it and convert to lat
-        let parkingInfo = this.state.parkingInfo;
-        let coordinates = parkingInfo.filter(carpark=> carpark.car_park_no.includes(query));
-        let lat = coordinates[0].y_coord;
-        let lng = coordinates[0].x_coord;
-        console.log(lat)
-        //check number of slots
-        let lots = this.state.lots;
+        let geoQuery = event.target.getAttribute('data-address');
+        //find the lat and lng using geocode
+        let latitude= this.state.lat;
+        let longtitude = this.state.lng;
+        Geocode.fromAddress(geoQuery).then(
+            response => {
+                const { lat, lng } = response.results[0].geometry.location;
+                console.log(lat, lng);
+                let latitude=lat;
+                let longtitude=lng;
+                console.log(latitude);
+                console.log(longtitude);
+                        let lots = this.state.lots;
         let result = lots.filter(carpark=> carpark.carpark_number.includes(query));
         let clearSearch = [];
-        this.setState({searchResult: result, filterResult: clearSearch});
+        this.setState({searchResult: result, filterResult: clearSearch,searchQuery: clearSearch, lat: latitude, lng:longtitude});
+                },
+
+
+
+            error => {
+            console.error(error);
+        }
+        );
+
+        //check number of slot
     }
 
 

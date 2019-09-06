@@ -58,6 +58,10 @@ export class MapContainer extends Component {
              lat: lat,
              lng: lng
             }}
+            center={{
+             lat: lat,
+             lng: lng
+            }}
             onClick={this.onMapClicked}
           >
         <Marker

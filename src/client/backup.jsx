@@ -51,3 +51,20 @@ render() {
                 }
             }
 }
+
+
+//backup code//
+
+Geocode.setApiKey("AIzaSyDW4ONvvWPJw4dnSIu1UVQQRjvZ0bCHL68");
+Geocode.enableDebug();
+
+
+Geocode.fromAddress(geoQuery).then(
+  response => {
+    const { lat, lng } = response.results[0].geometry.location;
+    console.log(lat, lng);
+  },
+  error => {
+    console.error(error);
+  }
+);

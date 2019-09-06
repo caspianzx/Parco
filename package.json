@@ -88,6 +88,7 @@
     "prop-types": ">=15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-geocode": "^0.1.2",
     "react-hot-loader": ">=4.6.5",
     "request": "^2.88.0",
     "sanitize.css": ">=8.0.0",
