@@ -23,7 +23,9 @@ class App extends React.Component {
             lng: 103.8435,
             searchResult: [],
             searchQuery: [],
-            filterResult: []
+            filterResult: [],
+            recommendation1:[],
+            recommendation2:[]
         };
         this.searchFilter = this.searchFilter.bind(this);
         this.checkLot = this.checkLot.bind(this);

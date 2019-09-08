@@ -10,14 +10,14 @@ function FilterList(props) {
     if (props.filterResult == "" && props.searchResult=="") {
         return (
             <div className={styles.nosearch}>
-                <p>no search yet</p>
+                <p></p>
             </div>
         )
-        } else if (props.filterResult != "" && props.searchResult== "") {
+        } else if (props.filterResult != "" || props.searchResult== "") {
             return (
                 <div>
-                                <ul className="list-group">
-                    {props.filterResult.slice(0,6).map((result, index) => (
+                    <ul className="list-group">
+                    {props.filterResult.slice(0,3).map((result, index) => (
                     <li className="list-group-item" id={styles.filterResult} key={index} data-value ={result.car_park_no} data-address={result.address} onClick ={props.checkLot}>
                     {result.address}
                     </li>
@@ -48,7 +48,7 @@ class Form extends React.Component {
                 <div>
                     <p className={styles.question}>Where would you like to go?</p>
                 </div>
-                    <input className={styles.input} placeholder="searching for.." onChange ={this.props.searchFilter} value ={this.props.searchQuery}/>
+                    <input className={styles.input} placeholder="Search" onChange ={this.props.searchFilter} value ={this.props.searchQuery}/>
                 <FilterList filterResult ={filterResult} checkLot={checkLot} searchResult={searchResult}/>
             </div>
         );
