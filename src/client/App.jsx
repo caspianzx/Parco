@@ -24,6 +24,7 @@ class App extends React.Component {
             searchResult: [],
             searchQuery: [],
             filterResult: [],
+            carparkName:[],
             recommendation1:[],
             recommendation2:[]
         };
@@ -52,33 +53,40 @@ class App extends React.Component {
     checkLot(event) {
         console.log(event.target.getAttribute('data-value'));
         console.log(event.target.getAttribute('data-address'));
+        console.log(event.target.getAttribute('data-id'));
         let query = event.target.getAttribute('data-value');
         let geoQuery = event.target.getAttribute('data-address');
+        //search for 2 other recommendation
+        let parkingInfo = this.state.parkingInfo;
+        let id_1 = event.target.getAttribute('data-id') -1;
+        let id_2= event.target.getAttribute('data-id') +1;
+        let recommendation_1 = parkingInfo.filter(carpark=> carpark._id == id_1);
+        console.log(id_1)
+        console.log(recommendation_1);
+        //issues: not addresses are not clustered according to geo location
+
         //find the lat and lng using geocode
-        let latitude= this.state.lat;
-        let longtitude = this.state.lng;
         Geocode.fromAddress(geoQuery).then(
             response => {
                 const { lat, lng } = response.results[0].geometry.location;
-                console.log(lat, lng);
+                // console.log(lat, lng);
                 let latitude=lat;
                 let longtitude=lng;
-                console.log(latitude);
-                console.log(longtitude);
-                        let lots = this.state.lots;
-        let result = lots.filter(carpark=> carpark.carpark_number.includes(query));
-        let clearSearch = [];
-        this.setState({searchResult: result, filterResult: clearSearch,searchQuery: clearSearch, lat: latitude, lng:longtitude});
+                // console.log(latitude);
+                // console.log(longtitude);
+                let lots = this.state.lots;
+                //search for carpark slots
+                let result = lots.filter(carpark=> carpark.carpark_number.includes(query));
+                // console.log(result)
+                //parse into int
+                let parsedResult = parseInt(result[0].carpark_info[0].lots_available);
+                let clearSearch = [];
+                this.setState({searchResult: parsedResult, filterResult: clearSearch,searchQuery: clearSearch, lat: latitude, lng:longtitude, carparkName: geoQuery});
                 },
-
-
-
             error => {
             console.error(error);
         }
         );
-
-        //check number of slot
     }
 
 
@@ -117,30 +125,26 @@ class App extends React.Component {
           return <div>Loading...</div>;
         } else {
             return (
-                    //experiment with material ui
-                    <div className = "container">
-                        <div className = "row">
-                            <div className ="col">
-                                <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery}/>
-                            </div>
-                        </div>
-                        <div className ="row">
-                            <div className ="col-10 offset-1 p-0">
-                                <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
-                            </div>
+                <div className = "container">
+                    <div className = "row">
+                        <div className ="col">
+                            <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery}/>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-                    );
-                }
-            }
+                    <div className ="row">
+                        <div className ="col-10 offset-1 p-0">
+                            <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
+                        </div>
+                    </div>
+                    <div className = "row">
+                        <div className ="col-8 offset-2">
+                            <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
 }
 
 export default hot(module)(App);

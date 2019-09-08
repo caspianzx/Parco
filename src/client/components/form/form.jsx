@@ -3,10 +3,10 @@ import React from 'react';
 import styles from './style.scss';
 
 function FilterList(props) {
-    //filtered results on change
-    console.log(props.filterResult)
-    //object containing number
-    console.log(props.searchResult)
+    // //filtered results on change
+    // console.log(props.filterResult)
+    // //object containing number
+    // console.log(props.searchResult)
     if (props.filterResult == "" && props.searchResult=="") {
         return (
             <div className={styles.nosearch}>
@@ -18,7 +18,7 @@ function FilterList(props) {
                 <div>
                     <ul className="list-group">
                     {props.filterResult.slice(0,3).map((result, index) => (
-                    <li className="list-group-item" id={styles.filterResult} key={index} data-value ={result.car_park_no} data-address={result.address} onClick ={props.checkLot}>
+                    <li className="list-group-item" id={styles.filterResult} key={index} data-value ={result.car_park_no} data-address={result.address} data-id={result._id} onClick ={props.checkLot}>
                     {result.address}
                     </li>
                     ))}
@@ -28,8 +28,7 @@ function FilterList(props) {
         } else if (props.filterResult == "" && props.searchResult != "") {
             return (
                 <div>
-                <div> Available slots </div>
-                <p>{props.searchResult[0].carpark_info[0].lots_available}</p>
+                <p></p>
                 </div>
                 )
         }
