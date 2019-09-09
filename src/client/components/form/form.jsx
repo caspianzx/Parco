@@ -17,7 +17,7 @@ function FilterList(props) {
             return (
                 <div>
                     <ul className="list-group">
-                    {props.filterResult.slice(0,3).map((result, index) => (
+                    {props.filterResult.slice(0,5).map((result, index) => (
                     <li className="list-group-item" id={styles.filterResult} key={index} data-value ={result.car_park_no} data-address={result.address} data-id={result._id} onClick ={props.checkLot}>
                     {result.address}
                     </li>
@@ -47,7 +47,9 @@ class Form extends React.Component {
                 <div>
                     <p className={styles.question}>Where would you like to go?</p>
                 </div>
-                    <input className={styles.input} placeholder="Search" onChange ={this.props.searchFilter} value ={this.props.searchQuery}/>
+
+                    <input className={styles.input} placeholder="Search" onChange ={this.props.searchFilter} onKeyDown={this.props.search}  value ={this.props.searchQuery} />
+
                 <FilterList filterResult ={filterResult} checkLot={checkLot} searchResult={searchResult}/>
             </div>
         );

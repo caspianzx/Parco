@@ -28,10 +28,23 @@ class App extends React.Component {
         };
         this.searchFilter = this.searchFilter.bind(this);
         this.checkLot = this.checkLot.bind(this);
+        this.search = this.search.bind(this);
     }
 
 
-    //onClick search list to recommended carpark and display
+    //onClick search list to recommended carpark and display top 5 results
+    search(event) {
+        if(event.keyCode == 13) {
+            console.log(event.target.value)
+            let searchQuery = event.target.value;
+            let searchUpperCase = event.target.value.toUpperCase();
+            let parkingInfo = this.state.parkingInfo;
+            let result = parkingInfo.filter(carpark=> carpark.address.includes(searchUpperCase));
+            console.log(result);
+            let clearSearch = [];
+            this.setState({recommendationList: result, searchQuery: searchQuery, filterResult: clearSearch})
+        }
+    }
 
 
     //filter carpark name with user input and display on searchbar
@@ -123,7 +136,7 @@ class App extends React.Component {
                 <div className = "container">
                     <div className = "row">
                         <div className ="col">
-                            <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery}/>
+                            <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery} search={this.search}/>
                         </div>
                     </div>
                     <div className ="row">
@@ -133,7 +146,7 @@ class App extends React.Component {
                     </div>
                     <div className = "row">
                         <div className ="col-8 offset-2">
-                            <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName}/>
+                            <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName} list = {this.state.recommendationList}/>
                         </div>
                     </div>
                 </div>
