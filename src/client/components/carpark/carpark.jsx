@@ -19,7 +19,9 @@ function Carpark (props) {
     } else if (props.searchResult < 40 && props.list =="") {
         return (
             <div className = {styles.result}>
-            there less than 30 slots here, would you like to checkout the following carparks near your search location? (insert 2 carparks name)
+            <i class="fas fa-exclamation-circle"></i>
+
+                there less than 30 slots here, would you like to checkout the following carparks near your search location? (insert 2 carparks name)
             </div>
         )
     } else if (props.searchResult == "" || props.list !=""){
