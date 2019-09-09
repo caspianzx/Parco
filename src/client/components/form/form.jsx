@@ -2,24 +2,58 @@ import React from 'react';
 
 import styles from './style.scss';
 
+function FilterList(props) {
+    // //filtered results on change
+    // console.log(props.filterResult)
+    // //object containing number
+    // console.log(props.searchResult)
+    if (props.filterResult == "" && props.searchResult=="") {
+        return (
+            <div className={styles.nosearch}>
+                <p></p>
+            </div>
+        )
+        } else if (props.filterResult != "" || props.searchResult== "") {
+            return (
+                <div>
+                    <ul className="list-group">
+                    {props.filterResult.slice(0,5).map((result, index) => (
+                    <li className="list-group-item" id={styles.filterResult} key={index} data-value ={result.car_park_no} data-address={result.address} data-id={result._id} onClick ={props.checkLot}>
+                     <i className="fas fa-search"></i> {result.address}
+                    </li>
+                    ))}
+                </ul>
+                </div>
+            );
+        } else if (props.filterResult == "" && props.searchResult != "") {
+            return (
+                <div>
+                <p></p>
+                </div>
+                )
+        }
+    }
+
+
+
 class Form extends React.Component {
 
+    render() {
+        let filterResult = this.props.filterResult;
+        let checkLot =  this.props.checkLot;
+        let searchResult = this.props.searchResult;
+        return (
+            <div>
+                <div>
+                    <p className={styles.question}>Where would you like to go?</p>
+                </div>
+                    <input className={styles.input} placeholder="Search" onChange ={this.props.searchFilter} onKeyDown={this.props.search}  value ={this.props.searchQuery} />
 
-  render() {
-    return (
-            <div className={styles.search}>
-                <div>Search Function</div>
-                <div><input className={styles.name} placeholder="searching for.." onChange ={this.props.searchFilter}/></div>
-                <ul className="list-group">
-                  {this.props.searchResults.map((product, index) => (
-                    <li className="list-group-item" key={product.id} value = {product.id}>
-                    {product.name} <button onClick ={this.props.detailsClick} value={product.id}>Details</button>
-                     </li>
-                ))}
-                </ul>
+
+                <FilterList filterResult ={filterResult} checkLot={checkLot} searchResult={searchResult}/>
             </div>
-    );
-  }
+        );
+      }
 }
 
 export default Form;
