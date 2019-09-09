@@ -10,18 +10,31 @@ function Carpark (props) {
     } else if (props.searchResult >= 40 && props.list =="") {
         return (
             <div className = {styles.result}>
-                <div>{props.searchResult} lots available at</div>
-                <div>{props.carparkName}</div>
-                <div>Free Parking Info</div>
-                <div>{props.info[0].free_parking}</div>
+                <div className= {styles.circle}>
+                    <p className={styles.lot}>{props.searchResult}</p>
+                    <p className={styles.lotword}> lots </p>
+                </div>
+            <div className ={styles.otherInfo}>
+                <div className={styles.rightInfo}>{props.carparkName}</div>
+                <div className={styles.rightInfo}>Free Parking:</div>
+                <div className={styles.rightInfo}>{props.info[0].free_parking}</div>
+                </div>
             </div>
+
+
         )
     } else if (props.searchResult < 40 && props.list =="") {
         return (
             <div className = {styles.result}>
-            <i class="fas fa-exclamation-circle"></i>
-
-                there less than 30 slots here, would you like to checkout the following carparks near your search location? (insert 2 carparks name)
+                <div className= {styles.circleRed}>
+                    <p className={styles.lot}>{props.searchResult}</p>
+                    <p className={styles.lotword}> lots </p>
+                </div>
+            <div className ={styles.otherInfo}>
+                <div className={styles.rightInfo}>{props.carparkName}</div>
+                <div className={styles.rightInfo}>Free Parking:</div>
+                <div className={styles.rightInfo}>{props.info[0].free_parking}</div>
+                </div>
             </div>
         )
     } else if (props.searchResult == "" || props.list !=""){

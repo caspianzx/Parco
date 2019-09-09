@@ -63,7 +63,7 @@ class App extends React.Component {
             let clearSearch =[];
             let result = parkingInfo.filter(carpark=> carpark.address.includes(searchUpperCase));
             console.log(result);
-            this.setState({filterResult: result, searchQuery: searchQuery, searchResult: clearSearch})
+            this.setState({filterResult: result, searchQuery: searchQuery, searchResult: clearSearch, recommendationList:clearSearch})
         }
     }
     //check for slots using carpark ID code
@@ -153,7 +153,7 @@ class App extends React.Component {
                     </div>
 
                     <div className = "row">
-                        <div className ="col-8 offset-2">
+                        <div className ="col-10 offset-1 p-0">
                             <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName} list = {this.state.recommendationList} info={this.state.searchResultInfo} checkLot={this.checkLot}/>
                         </div>
                     </div>
@@ -168,7 +168,7 @@ class App extends React.Component {
                         </div>
                     </div>
                     <div className = "row">
-                        <div className ="col-8 offset-2">
+                        <div className ="col">
                             <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName} list = {this.state.recommendationList} info={this.state.searchResultInfo} checkLot={this.checkLot}/>
                         </div>
                     </div>

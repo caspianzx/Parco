@@ -1,9 +1,7 @@
 .result{
 	position:relative;
-	margin-top: 300px;
+	margin-top: 320px;
 	text-align: center;
-
-
 }
 
 #searchList {
@@ -12,4 +10,60 @@
 	left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
+}
+
+#color {
+	color: lightseagreen;
+}
+
+
+.circle{
+	display: inline-block;
+	border: solid 3px lightseagreen;
+	width: 100px;
+	border-radius: 50px;
+	height: 100px;
+	align-content: center;
+}
+
+.circleRed{
+	display: inline-block;
+	border: solid 3px tomato;
+	width: 100px;
+	border-radius: 50px;
+	height: 100px;
+	align-content: center;
+}
+
+.lot {
+	display:block;
+	position: relative;
+	font-family: "Open sans", sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	margin-top: 17px;
+	margin-bottom: 0px;
+}
+
+.lotword {
+	display:block;
+	position: relative;
+	font-family: "Open sans", sans-serif;
+	font-size: 15px;
+	margin-top: -8px;
+}
+
+.otherInfo {
+	display: inline-block;
+
+/*	border: solid 3px mediumpurple;
+	border-radius: 5px;*/
+	width: 200px;
+	left-margin:10px;
+}
+
+.rightInfo {
+
+	font-family: "Open sans", sans-serif;
+	font-size: 14px;
 }
