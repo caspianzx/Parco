@@ -10,7 +10,6 @@ Geocode.setApiKey("AIzaSyDW4ONvvWPJw4dnSIu1UVQQRjvZ0bCHL68");
 Geocode.enableDebug();
 
 
-
 class App extends React.Component {
     constructor() {
         super();
@@ -25,12 +24,15 @@ class App extends React.Component {
             searchQuery: [],
             filterResult: [],
             carparkName:[],
-            recommendation1:[],
-            recommendation2:[]
+            recommendationList:[]
         };
         this.searchFilter = this.searchFilter.bind(this);
         this.checkLot = this.checkLot.bind(this);
     }
+
+
+    //onClick search list to recommended carpark and display
+
 
     //filter carpark name with user input and display on searchbar
     searchFilter(event){
@@ -56,14 +58,7 @@ class App extends React.Component {
         console.log(event.target.getAttribute('data-id'));
         let query = event.target.getAttribute('data-value');
         let geoQuery = event.target.getAttribute('data-address');
-        //search for 2 other recommendation
-        let parkingInfo = this.state.parkingInfo;
-        let id_1 = event.target.getAttribute('data-id') -1;
-        let id_2= event.target.getAttribute('data-id') +1;
-        let recommendation_1 = parkingInfo.filter(carpark=> carpark._id == id_1);
-        console.log(id_1)
-        console.log(recommendation_1);
-        //issues: not addresses are not clustered according to geo location
+
 
         //find the lat and lng using geocode
         Geocode.fromAddress(geoQuery).then(
@@ -107,10 +102,10 @@ class App extends React.Component {
                     parkingInfo: res2.result.records
                 });
             },(error) => {
-                    this.setState({
-                    isLoaded: true,
-                    error
-                    });
+                this.setState({
+                isLoaded: true,
+                error
+                });
             }
           );
     }
