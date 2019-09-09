@@ -152,7 +152,7 @@ class App extends React.Component {
                     </div>
                     <div className = "row">
                         <div className ="col-8 offset-2">
-                            <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName} list = {this.state.recommendationList}/>
+                            <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName} list = {this.state.recommendationList} info={this.state.searchResultInfo} checkLot={this.checkLot}/>
                         </div>
                     </div>
                 </div>
