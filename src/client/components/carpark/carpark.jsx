@@ -20,7 +20,7 @@ function Carpark (props) {
             there less than 30 slots here, would you like to checkout the following carparks near your search location? (insert 2 carparks name)
             </div>
         )
-    } else if (props.searchResult == "" && props.list !=""){
+    } else if (props.searchResult == "" || props.list !=""){
         return (
             <div className = {styles.result}>
             recommendation list goes here

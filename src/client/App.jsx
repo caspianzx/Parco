@@ -21,6 +21,7 @@ class App extends React.Component {
             lat: 1.2751,
             lng: 103.8435,
             searchResult: [],
+            searchResultInfo:[],
             searchQuery: [],
             filterResult: [],
             carparkName:[],
@@ -86,10 +87,15 @@ class App extends React.Component {
                 //search for carpark slots
                 let result = lots.filter(carpark=> carpark.carpark_number.includes(query));
                 // console.log(result)
-                //parse into int
+                //parse result into into search result info
+                let parkingInfo = this.state.parkingInfo;
+                let carparkInfo = parkingInfo.filter(carpark=> carpark.address.includes(geoQuery));
+                console.log(result);
+
                 let parsedResult = parseInt(result[0].carpark_info[0].lots_available);
+                //save parking info in
                 let clearSearch = [];
-                this.setState({searchResult: parsedResult, filterResult: clearSearch,searchQuery: clearSearch, lat: latitude, lng:longtitude, carparkName: geoQuery});
+                this.setState({searchResult: parsedResult, filterResult: clearSearch,searchQuery: clearSearch, lat: latitude, lng:longtitude, carparkName: geoQuery, searchResultInfo:carparkInfo, recommendationList:clearSearch});
                 },
             error => {
             console.error(error);
