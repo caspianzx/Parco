@@ -60,9 +60,10 @@ class App extends React.Component {
             let searchUpperCase = event.target.value.toUpperCase();
             //set state filtered array into  this.state.filterResult
             let parkingInfo = this.state.parkingInfo;
+            let clearSearch =[];
             let result = parkingInfo.filter(carpark=> carpark.address.includes(searchUpperCase));
             console.log(result);
-            this.setState({filterResult: result, searchQuery: searchQuery})
+            this.setState({filterResult: result, searchQuery: searchQuery, searchResult: clearSearch})
         }
     }
     //check for slots using carpark ID code
@@ -137,7 +138,7 @@ class App extends React.Component {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
           return <div>Loading... <i class="fas fa-circle-notch fa-spin"></i></div>;
-        } else {
+        } else if (isLoaded == true && this.state.filterResult =="") {
             return (
                 <div className = "container">
                     <div className = "row">
@@ -148,6 +149,22 @@ class App extends React.Component {
                     <div className ="row">
                         <div className ="col-10 offset-1 p-0">
                             <MapContainer  lat={this.state.lat} lng={this.state.lng}/>
+                        </div>
+                    </div>
+
+                    <div className = "row">
+                        <div className ="col-8 offset-2">
+                            <Carpark searchResult={this.state.searchResult}  carparkName={this.state.carparkName} list = {this.state.recommendationList} info={this.state.searchResultInfo} checkLot={this.checkLot}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        } else if (isLoaded == true && this.state.filterResult !="") {
+            return (
+                <div className = "container">
+                    <div className = "row">
+                        <div className ="col">
+                            <Form searchFilter={this.searchFilter} filterResult={this.state.filterResult} checkLot={this.checkLot} searchResult={this.state.searchResult} searchQuery={this.state.searchQuery} search={this.search}/>
                         </div>
                     </div>
                     <div className = "row">

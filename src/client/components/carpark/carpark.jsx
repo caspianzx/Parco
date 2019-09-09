@@ -5,7 +5,7 @@ function Carpark (props) {
     console.log (props);
     if (props.searchResult=="" && props.list =="") {
         return (
-            <div className = {styles.result}>no search yet</div>
+            <div className = {styles.result}></div>
         )
     } else if (props.searchResult >= 40 && props.list =="") {
         return (
