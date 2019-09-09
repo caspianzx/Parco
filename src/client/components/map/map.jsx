@@ -5,9 +5,7 @@ import styles from './style.scss';
 const mapStyles = {
   width: '100%',
   height: '300px',
-  'marginTop': '0px',
-  'position':'fixed',
-  "zIndex": "-1"
+  'marginTop': '0px'
  };
 
 export class MapContainer extends Component {
@@ -63,6 +61,8 @@ export class MapContainer extends Component {
              lng: lng
             }}
             onClick={this.onMapClicked}
+            draggable={true}
+            scrollwheel={true}
           >
         <Marker
         onClick={this.onMarkerClick}
