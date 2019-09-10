@@ -6,7 +6,7 @@ import 'sanitize.css/sanitize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
+import App from './testing';
 
 // global styles
 import './style.scss';
