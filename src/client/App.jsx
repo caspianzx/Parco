@@ -74,7 +74,6 @@ class App extends React.Component {
         let query = event.target.getAttribute('data-value');
         let geoQuery = event.target.getAttribute('data-address');
 
-
         //find the lat and lng using geocode
         Geocode.fromAddress(geoQuery).then(
             response => {
@@ -138,7 +137,7 @@ class App extends React.Component {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
           return <div>Loading... <i class="fas fa-circle-notch fa-spin"></i></div>;
-        } else if (isLoaded == true && this.state.filterResult =="") {
+        } else if (isLoaded == true && this.state.filterResult =="" && this.state.recommendationList =="") {
             return (
                 <div className = "container">
                     <div className = "row">
@@ -159,7 +158,7 @@ class App extends React.Component {
                     </div>
                 </div>
             );
-        } else if (isLoaded == true && this.state.filterResult !="") {
+        } else if (isLoaded == true && this.state.filterResult !="" || this.state.recommendationList !="") {
             return (
                 <div className = "container">
                     <div className = "row">

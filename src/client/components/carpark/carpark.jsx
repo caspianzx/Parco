@@ -39,11 +39,11 @@ function Carpark (props) {
         )
     } else if (props.searchResult == "" || props.list !=""){
         return (
-            <div className = {styles.result}>
-                <div> Search Result</div>
+            <div>
+                <div className = {styles.enterResult}> Search Result</div>
                     <div>
                         <ul className="list-group">
-                        {props.list.slice(0,5).map((result, index) => (
+                        {props.list.slice(0,9).map((result, index) => (
                             <li className="list-group-item" id={styles.searchList} key={index} data-value ={result.car_park_no} data-address={result.address} data-id={result._id} onClick ={props.checkLot}>
                             {result.address}
                             </li>

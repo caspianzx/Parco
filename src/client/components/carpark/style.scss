@@ -5,8 +5,9 @@
 }
 
 #searchList {
-	font-size: 10px;
-	width: 100%;
+  font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	width: 90%;
 	left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -66,4 +67,15 @@
 
 	font-family: "Open sans", sans-serif;
 	font-size: 14px;
+}
+
+.enterResult{
+	position:relative;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-family: "Open sans", sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 1px;
 }
