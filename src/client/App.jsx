@@ -97,6 +97,7 @@ class App extends React.Component {
                 },
             error => {
             console.error(error);
+            alert("Sorry, unable to generate data real-time currently")
 
             }
         );
