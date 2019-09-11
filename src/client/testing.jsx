@@ -14,13 +14,6 @@ function NavBar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                    <Link to="/about">
-                        <a className="nav-link" href="#" id="navLink">
-                        About Us
-                        </a>
-                    </Link>
-                    </li>
-                    <li className="nav-item">
                         <Link to="/service">
                         <a className="nav-link" href="#" id="navLink">Service
                         </a>
@@ -36,7 +29,6 @@ function NavBar() {
         </nav>
       <div>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
         <Route path="/service" component={Service} />
         <Route path="/contact" component={Contact} />
       </div>
@@ -55,12 +47,18 @@ function Home() {
                 </div>
             </div>
             <div className ="row">
-                <div className ="col-8 offset-2">
+                <div className ="col-10 offset-1">
                     <div className= {styles.aboutus} >ABOUT US</div>
-                    <p className={styles.intro}><span className ={styles.brand}>PARCO</span> is  a visual and interactive communication agency specialized in internet industry, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+                    <p className={styles.intro}><span className ={styles.brand}>PARCO</span> is an application that tracks car park lot availability around Singapore real-time. Features include a search function that is able to filter for car parks that are near the  search query, the ability to alert the users if there are little lots in the carpark, and lastly, it informs users whether free parking is available.<br/>Interested? Click the link below to get started!</p>
                 </div>
             </div>
-
+            <div className ="row">
+                <div className ="col-8 offset-2">
+                    <a href ="/service">
+                    <div className= {styles.getstarted}><i class="fas fa-car" id={styles.carlogo}></i>GET STARTED</div>
+                    </a>
+                </div>
+            </div>
         </div>
 
     </div>

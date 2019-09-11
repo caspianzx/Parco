@@ -22,15 +22,34 @@
 }
 
 .intro {
+	display:block;
 	font-family: "Open sans", sans-serif;
 	font-size: 13px;
 	text-align: center;
+	margin-bottom: 50px;
 
 }
 
 .brand {
 	font-weight: 800;
 	text-transform: uppercase;
+}
+
+.getstarted {
+	display:block;
+	position:relative;
+	margin: auto;
+	text-align: center;
+	font-family: "Open sans", sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	border: 3px solid #111111;
+	padding: 9px 20px;
+	max-width: 285px;
+}
+
+#carlogo {
+	margin-right:10px;
 }
 
 
