@@ -48,7 +48,7 @@ function Home() {
             <div className ="row">
                 <div className ="col-12 p-0">
                     <div className ={styles.overlay}></div>
-                    <div className={styles.caption}>Parking will never be the same again</div>
+                    <div className={styles.caption}>Parking will never be the same again.</div>
                     <div className={styles.banner}>
                     </div>
                 </div>
