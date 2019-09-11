@@ -65,27 +65,23 @@ function Home() {
   );
 }
 
-function About() {
-  return (
-    <div>
-       <div className ="container">
-            <div className ="row">
-                <div className ="col-8 offset-2">
-                    <h2>About Page in progress</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-  );
-}
+
 
 function Contact() {
   return (
     <div>
        <div className ="container">
             <div className ="row">
-                <div className ="col-8 offset-2">
-                    <h2>Contact Page in progress</h2>
+                <div className ="col-10 offset-1">
+                    <div className ={styles.team}> Our Team </div>
+                    <div className ={styles.founderimage}></div>
+                    <div className ={styles.foundername}>Caspian Ng</div>
+                    <div className ={styles.founder}>founder</div>
+                    <div className ={styles.links}>
+                        <span className="fab fa-github" id={styles.linkspace}></span>
+                        <span className="fab fa-linkedin-in" id={styles.linkspace}></span>
+                        <span className="fab fa-facebook-f" id={styles.linkspace}></span>
+                    </div>
                 </div>
             </div>
         </div>

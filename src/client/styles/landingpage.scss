@@ -52,6 +52,66 @@
 	margin-right:10px;
 }
 
+.team {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-top: 40px;
+	font-family: "Open sans", sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+
+}
+
+.founderimage {
+	background-image: url("https://web.whatsapp.com/pp?e=https%3A%2F%2Fpps.whatsapp.net%2Fv%2Ft61.24694-24%2F65813642_1402177466623190_459894983407697920_n.jpg%3Foe%3D5D7C5A15%26oh%3Dbf318b4ae60c7fe6b0d70aa308fb15c8&t=l&u=6581250830%40c.us&i=1565789780");
+	display: block;
+	position: relative;
+	max-width: 240px;
+	border-radius: 200px;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 0px;
+	height: 230px;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+.foundername {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-top: 20px;
+	font-family: "Open sans", sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+}
+.founder {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-top: 5px;
+	font-family: "Open sans", sans-serif;
+	font-size: 13px;
+	font-weight: lighter;
+	font-style: italic;
+}
+
+.links {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-top: 20px;
+	border-top: 2px solid #efefef;
+	border-bottom: 2px solid #efefef;
+	padding: 9px 20px;
+	max-width: 130px;
+}
+
+#linkspace{
+	padding: 0px 7px;
+}
+
 
 @media only screen and (min-width: 780px) {
 	.banner {
