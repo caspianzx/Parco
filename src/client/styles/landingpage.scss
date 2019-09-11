@@ -7,14 +7,31 @@
 	height: 212px;
 	background-position: 60% 50%;
 	background-size: cover;
-	background-image: url("https://www.rwsentosa.com/rwsinvites/-/media/project/non-gaming/rwsinvites/images/main/rwsinvites-road-kv-1366x666px-invi0850invites.jpg?mh=666&la=en&h=666&w=1366&mw=1366&hash=B7EC5509BE8894CD2A017037277C60212F76921C");
+	background-image: url("https://www.mercedes-benz.com.sg/passengercars/content-pool/marketing-pool/stage-homepage/stage-homepage-sg/_jcr_content/par/stagepushableelement_984952738.MQ6.12.20190906083916.jpeg");
+	z-index: 1;
 }
+
+
+.caption {
+	color:white;
+	display: block;
+	position: fixed;
+	width:100%;
+	margin: auto;
+	margin-top: 40px;
+	z-index: 3;
+	text-align: center;
+	font-family: "Open sans", sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+}
+
 
 .aboutus {
 	display:block;
 	position:relative;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 45px;
+	margin-bottom: 45px;
 	text-align: center;
 	font-family: "Open sans", sans-serif;
 	font-size: 18px;
@@ -26,7 +43,7 @@
 	font-family: "Open sans", sans-serif;
 	font-size: 13px;
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 45px;
 
 }
 
@@ -116,5 +133,9 @@
 @media only screen and (min-width: 780px) {
 	.banner {
 		height: 400px ;
+	}
+	.caption {
+		font-size: 25px;
+		margin-top: 50px;
 	}
 }

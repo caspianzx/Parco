@@ -47,6 +47,8 @@ function Home() {
         <div className ="container-fluid">
             <div className ="row">
                 <div className ="col-12 p-0">
+                    <div className ={styles.overlay}></div>
+                    <div className={styles.caption}>Parking will never be the same again</div>
                     <div className={styles.banner}>
                     </div>
                 </div>
@@ -60,7 +62,7 @@ function Home() {
             <div className ="row">
                 <div className ="col-8 offset-2">
                     <a href ="/service">
-                    <div className= {styles.getstarted}><i class="fas fa-car" id={styles.carlogo}></i>GET STARTED</div>
+                    <div className= {styles.getstarted}><i className="fas fa-car" id={styles.carlogo}></i>GET STARTED</div>
                     </a>
                 </div>
             </div>
